@@ -1,9 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { windowHeight, windowWidth } from '../utils/Dimensions';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-
-const texto = "texto"
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Search =()=>{
   return(
@@ -13,7 +11,11 @@ const Search =()=>{
         placeholder="Pesquisar"
       />
       <View style={styles.iconStyle}>
-          <AntDesign name={"filter"} size={25} color="#000"/>
+      <Icon 
+        name='ios-search' 
+        size={25} 
+        color='#000'      
+      ></Icon>
       </View>
     </View>   
   );

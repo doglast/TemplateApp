@@ -1,13 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { windowHeight, windowWidth } from '../utils/Dimensions';
 
-const Footer =()=>{
+const Footer =({navigation})=>{
   return(
     <View style={styles.container} >
       <View style={styles.footer}>
-        <Text style={styles.text}>O Guia</Text>
-        <Text style={styles.text}>Entre em contato</Text>
+        <Text style={styles.text}>O Zine</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Contact')} >
+          <Text style={styles.text}>Entre em contato</Text>
+        </TouchableOpacity>
+        
         <Text style={styles.text}>Anuncie aqui</Text> 
       </View>
     </View>
@@ -21,12 +24,15 @@ const styles = StyleSheet.create({
     flex: 1 
   },
   footer: {
-    marginTop:windowHeight*0.55,
-    height:windowHeight*0.1,
+
+    height:windowHeight*0.05,
+    width: windowWidth,
     backgroundColor:'#c23',
     flexDirection:'row',
     justifyContent:'space-between',
-    paddingHorizontal: windowHeight*0.02
+    paddingHorizontal: windowHeight*0.02,
+    position: 'absolute',
+    bottom:0
   },
   text: {
     fontSize: 16,

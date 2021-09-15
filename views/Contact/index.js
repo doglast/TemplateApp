@@ -1,13 +1,25 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Search from '../../components/Search';
-import { windowHeight } from '../../utils/Dimensions';
-import Header from '../../components/Header';
+import { windowHeight, windowWidth } from '../../utils/Dimensions';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Contact = ({}) =>{
+const Contact = ({navigation}) =>{
   return(
-    <View style={styles.container}>
-      <Header/>
+      <View style={styles.container}>
+        <View style={styles.container}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+          >
+            <Icon 
+              name="close-outline" 
+              color="#fff"
+              size={25}
+            />
+          </TouchableOpacity>      
+        </View>       
+      </View>
       <Search/>
       <View style={{justifyContent:'center', alignItems:'center'}}>
         <Text style={styles.titulo}>Entre em contato conosco</Text>
@@ -56,6 +68,22 @@ const styles = StyleSheet.create({
     color: '#7f7f7f',
     fontSize: 18,
   },
-  
+  header: {
+    marginTop:windowHeight*0.03,
+    height:windowHeight*0.06,
+    backgroundColor:'#c23',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    paddingHorizontal: windowWidth*0.03,
+    paddingTop:10,
+  },
+  logo: {
+    fontSize: 16,
+    color: '#f3f3f3',
+  },
+  menu: {
+    fontSize: 16,
+    color: '#f3f3f3',
+  },
 
 });

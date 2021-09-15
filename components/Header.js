@@ -8,7 +8,7 @@ const Header =({navigation})=>{
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity
-          onPress={() => navigation.goBack()}
+          onPress={() => navigation.popToTop()}
         >
           <Icon 
             name="close-outline" 

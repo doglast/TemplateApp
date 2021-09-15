@@ -17,7 +17,6 @@ export default function App() {
       >
         <Drawer.Screen name='Main' component={MainStack}/>
         <Drawer.Screen name='Contact' component={Contact}/>
-        {/*<Drawer.Screen name='Contact' component={ContactStackScreen}/>*/}
       </Drawer.Navigator>      
     </NavigationContainer>
   );

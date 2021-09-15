@@ -24,17 +24,18 @@ const MainStack = () =>{
       activeColor='#ffff'
       barStyle={{ backgroundColor: '#303030' }}
     >
-      {/*<Tab.Screen 
+      <Tab.Screen 
         name='Home'
         component={HomeStackScreen}
         options={{
           tabBarLabel:'Menu',
           tabBarColor:'#303030',
           tabBarIcon:({color}) =>(
-            <Icon name='ios-home' color={color} size={26}/>
+            <Icon name='ios-home' color={color} size={24}/>
           ),
         }}
-      />*/}
+      />
+      {/**/}
       <Tab.Screen 
         name='Photo'
         component={PhotoStackScreen}
@@ -42,7 +43,7 @@ const MainStack = () =>{
           tabBarLabel:'Fotos',
           tabBarColor:'#dc3545',
           tabBarIcon:({color}) =>(
-            <Icon name='ios-camera' color={color} size={26}/>
+            <Icon name='ios-camera' color={color} size={24}/>
           ),
         }}
       />
@@ -53,7 +54,7 @@ const MainStack = () =>{
           tabBarLabel:'Agenda',
           tabBarColor:'#00c8ff',
           tabBarIcon:({color}) =>(
-            <Icon name='ios-calendar-outline' color={color} size={26}/>
+            <Icon name='ios-calendar-outline' color={color} size={24}/>
           ),
         }}
       />
@@ -64,7 +65,7 @@ const MainStack = () =>{
           tabBarLabel:'Blog',
           tabBarColor:'#e83e8c',
           tabBarIcon:({color}) =>(
-            <Icon name='ios-chatbubble-ellipses-outline' color={color} size={26}/>
+            <Icon name='ios-chatbubble-ellipses-outline' color={color} size={24}/>
           ),
         }}
       />
@@ -75,7 +76,7 @@ const MainStack = () =>{
           tabBarLabel:'Promoções',
           tabBarColor:'#38e860',
           tabBarIcon:({color}) =>(
-            <Icon name='ios-gift-outline' color={color} size={26}/>
+            <Icon name='ios-gift-outline' color={color} size={24}/>
           ),
         }}
       />
@@ -206,7 +207,7 @@ const PhotoStackScreen = ({navigation}) =>(
         fontWeight:'bold'
       }
     }}
-    initialRouteName={'Photo'}
+    initialRouteName={'Home'}
   >
     <PhotoStack.Screen 
       name='Photo' 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, SafeAreaView} from 'react-native';
 import Search from '../../components/Search';
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
@@ -13,7 +13,6 @@ const Home = ({ navigation }) =>{
       <Search/>
       <Carousel data = {dummyData}/>
       <Card data ={dummyData}/>
-      <Footer navigation = {navigation}/>
     </ScrollView>
   );
 };

@@ -1,10 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
-import {
-  MainStack
-} from './views';
+import { DrawerContent } from './components/DrawerContent';
+import { Contact, MainStack } from './views';
 
 const Drawer = createDrawerNavigator();
 
@@ -12,12 +10,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName={'Home'} 
+        drawerContent={props => <DrawerContent {...props}/>} 
         screenOptions={{
           headerShown: false
         }}
       >
-        <Drawer.Screen name='Home' component={MainStack}/>
+        <Drawer.Screen name='Main' component={MainStack}/>
+        <Drawer.Screen name='Contact' component={Contact}/>
         {/*<Drawer.Screen name='Contact' component={ContactStackScreen}/>*/}
       </Drawer.Navigator>      
     </NavigationContainer>

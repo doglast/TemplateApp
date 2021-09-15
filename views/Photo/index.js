@@ -1,18 +1,16 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import Search from '../../components/Search';
 import Card from '../../components/Card';
-
-import Carousel from '../../components/Carousel';
 import { dummyData } from '../../data/Data';
 
 
 const Photo = ({ navigation }) =>{
   return(
-    <ScrollView>
+    <SafeAreaView>
       <Search/>
       <Card data ={dummyData}/>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 

@@ -1,13 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { windowHeight, windowWidth } from '../utils/Dimensions';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Header =()=>{
+const Header =({navigation})=>{
   return(
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.logo}>LOGO</Text>
-        <Text style={styles.menu}>MENU H</Text>      
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+        >
+          <Icon 
+            name="close-outline" 
+            color="#fff"
+            size={25}
+          />
+        </TouchableOpacity>      
       </View>       
     </View>
   );

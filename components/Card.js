@@ -8,6 +8,7 @@ const Card = ({data}) =>{
     return(
       <FlatList style={{marginBottom:windowHeight*0.07}}
         data =  {data}
+        horizontal = {false}
         keyExtractor = {(item, index) => 'key' + index}
         renderItem = {({item}) =>{
           return <CardItem item = {item}/>

@@ -1,12 +1,13 @@
 import React from 'react';
-import {View, ScrollView, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import Search from '../../components/Search';
-import Footer from '../../components/Footer';
 import { windowHeight } from '../../utils/Dimensions';
+import Header from '../../components/Header';
 
 const Contact = ({}) =>{
   return(
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
+      <Header/>
       <Search/>
       <View style={{justifyContent:'center', alignItems:'center'}}>
         <Text style={styles.titulo}>Entre em contato conosco</Text>
@@ -23,8 +24,7 @@ const Contact = ({}) =>{
           <Text style={styles.texto}>Telefone: </Text>
         </View>
       </View>   
-      <Footer/>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -32,7 +32,7 @@ export default Contact;
 
 const styles = StyleSheet.create({
   container:{
-    
+    flex: 1
   },
   containerEndereco:{
     flexDirection:'column'

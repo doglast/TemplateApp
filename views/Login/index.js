@@ -15,6 +15,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import { useTheme } from 'react-native-paper';
 
+import {AuthContext} from '../components/Context'
+
 const Login = ({navigation}) => {
 
   const [data, setData ] = React.useState({
@@ -22,7 +24,9 @@ const Login = ({navigation}) => {
     password:'',
     check_textInputChange: false,
     secureTextEntry: true
-  })
+  });
+
+  const { login } = React.useContext(AuthContext);
   
   const textInputChange = (val) =>{
     if(val.length !== 0){
@@ -123,12 +127,17 @@ const Login = ({navigation}) => {
         </View>
         
         <View style={styles.button}>
-            <LinearGradient
-              colors={['#08d4c4', '#01ab9d']}
+            <TouchableOpacity
               style={styles.signIn}
+              onPress={()=>{login()}}
             >
-              <Text style={[styles.textSign,{color:'#fff'}]}>Entre</Text>
-            </LinearGradient>
+              <LinearGradient
+                colors={['#08d4c4', '#01ab9d']}
+                style={styles.signIn}
+              >
+                <Text style={[styles.textSign,{color:'#fff'}]}>Entre</Text>
+              </LinearGradient>
+            </TouchableOpacity>     
             <TouchableOpacity
               onPress={()=> navigation.navigate('Logon')}
               style={[styles.signIn,{

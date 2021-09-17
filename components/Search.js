@@ -1,23 +1,40 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { 
+  View, 
+  StyleSheet, 
+  TextInput, 
+  Keyboard, 
+  KeyboardAvoidingView, 
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+ } from 'react-native';
 import { windowHeight, windowWidth } from '../utils/Dimensions';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Search =()=>{
   return(
-    <View style={styles.inputContainer} >
-      <TextInput
-        style={styles.input}
-        placeholder="Pesquisar"
-      />
-      <View style={styles.iconStyle}>
-      <Icon 
-        name='ios-search' 
-        size={25} 
-        color='#000'      
-      ></Icon>
-      </View>
-    </View>   
+    <KeyboardAvoidingView>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.inputContainer} >
+        <TextInput
+          style={styles.input}
+          placeholder="Pesquisar"
+        />
+        <View style={styles.iconStyle}>
+          <TouchableOpacity
+              onPress={() => alert('Buscando')}
+            >
+              <Icon 
+              name='ios-search' 
+              size={25} 
+              color='#000'      
+            ></Icon>
+            </TouchableOpacity>          
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+   
   );
 }
 
@@ -48,13 +65,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   iconStyle: {
-    padding: 10,
-    height: '15%',
+    paddingHorizontal: 10,
     justifyContent: 'center',
     alignItems: 'center',
     borderLeftColor: '#000',
     borderLeftWidth: 1,
-    width: '15%',
   },
   input: {
     padding: 10,

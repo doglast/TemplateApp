@@ -2,14 +2,15 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContent } from './components/DrawerContent';
-import { Contact, MainStack } from './views';
+import { Contact, MainStack, RootStackScreen } from './views';
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
+      <RootStackScreen/>
+      {/* <Drawer.Navigator
         drawerContent={props => <DrawerContent {...props}/>} 
         screenOptions={{
           headerShown: false
@@ -17,7 +18,7 @@ export default function App() {
       >
         <Drawer.Screen name='Main' component={MainStack}/>
         <Drawer.Screen name='Contact' component={Contact}/>
-      </Drawer.Navigator>      
+      </Drawer.Navigator>   */}    
     </NavigationContainer>
   );
 }

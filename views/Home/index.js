@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, SafeAreaView} from 'react-native';
+import {ScrollView, StatusBar,} from 'react-native';
 import Search from '../../components/Search';
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
@@ -10,6 +10,7 @@ import { dummyData } from '../../data/Data';
 const Home = ({ navigation }) =>{
   return(
     <ScrollView>
+      <StatusBar barStyle='light-content'/>
       <Search/>
       <Carousel data = {dummyData}/>
       <Card data ={dummyData}/>

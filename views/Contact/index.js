@@ -20,7 +20,6 @@ const Contact = ({navigation}) =>{
           </TouchableOpacity>      
         </View>       
       </View>
-      <Search/>
       <View style={{justifyContent:'center', alignItems:'center'}}>
         <Text style={styles.titulo}>Entre em contato conosco</Text>
         <View style={styles.containerEndereco}>
@@ -54,7 +53,6 @@ const styles = StyleSheet.create({
     marginBottom: windowHeight*0.37,
   },
   titulo:{
-    marginTop: windowHeight*0.01,
     color: '#000',
     fontSize: 28,
   },

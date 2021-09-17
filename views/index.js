@@ -6,6 +6,10 @@ import Agenda from './Agenda'
 import TV from './TV';
 import Promo from './Promo';
 import Blog from './Blog';
+import SplashScreen from './SplashScreen';
+import Logon from './Logon';
+import Login from './Login';
+import RootStackScreen from './RootStack';
 
 
 export {
@@ -17,4 +21,8 @@ export {
   Promo,
   MainStack,
   TV,
+  Login,
+  Logon,
+  SplashScreen,
+  RootStackScreen
 }

@@ -19,6 +19,8 @@ import {AuthContext} from '../../components/Context'
 
 const Logon = ({navigation}) => {
 
+  const { logon } = React.useContext(AuthContext);
+
   const [data, setData ] = React.useState({
     email:'',
     password:'',
@@ -171,12 +173,17 @@ const Logon = ({navigation}) => {
         </View>
         
         <View style={styles.button}>
-            <LinearGradient
-              colors={['#08d4c4', '#01ab9d']}
+        <TouchableOpacity
               style={styles.signIn}
+              onPress={()=>{logon()}}
             >
-              <Text style={[styles.textSign,{color:'#fff'}]}>Cadastre-se</Text>
-            </LinearGradient>
+              <LinearGradient
+                colors={['#08d4c4', '#01ab9d']}
+                style={styles.signIn}
+              >
+                <Text style={[styles.textSign,{color:'#fff'}]}>Cadastre-se</Text>
+              </LinearGradient>
+            </TouchableOpacity> 
             <TouchableOpacity
               onPress={()=> navigation.navigate('Login')}
               style={[styles.signIn,{

@@ -7,10 +7,10 @@ import {AuthContext} from './Context';
 
 export function DrawerContent(props){
   const paperTheme = useTheme();
- {/*const { signOut, toggleTheme } = React.useContext(AuthContext);*/}
- const [isDarkTheme, setIsDarkTheme] = React.useState(false);
- const toggleTheme =()=>{
-   setIsDarkTheme(!isDarkTheme);
+  const { logout } = React.useContext(AuthContext);
+  const [isDarkTheme, setIsDarkTheme] = React.useState(false);
+  const toggleTheme =()=>{
+    setIsDarkTheme(!isDarkTheme);
  }
   return (
     <View style={{flex:1}}>
@@ -139,7 +139,7 @@ export function DrawerContent(props){
                 />
             )}
             label="Sair"
-            onPress={() => {}}
+            onPress={() => {logout()}}
         />
       </Drawer.Section>
     </View>

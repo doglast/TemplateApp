@@ -15,7 +15,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import { useTheme } from 'react-native-paper';
 
-import {AuthContext} from '../components/Context'
+import {AuthContext} from '../../components/Context'
 
 const Logon = ({navigation}) => {
 

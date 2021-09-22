@@ -23,32 +23,45 @@ const Login = ({navigation}) => {
     email:'',
     password:'',
     check_textInputChange: false,
-    secureTextEntry: true
+    secureTextEntry: true,
+    isValidEmail: true,
+    isValidPassword: true
   });
 
   const { login } = React.useContext(AuthContext);
   
   const textInputChange = (val) =>{
-    if(val.length !== 0){
+    if(val.length >= 9){
       setData({
         ...data,
         email: val,
-        check_textInputChange:true
+        check_textInputChange:true,
+        isValidEmail:true
       })
     }else{
       setData({
         ...data,
         email:val,
-        check_textInputChange:false
+        check_textInputChange:false,
+        isValidEmail:false
       })
     }
   }
 
   const handlePasswordChange = (val) =>{
+    if(val.trim().length >= 8){
       setData({
         ...data,
         password: val,
+        isValidPassword: true
       })
+    }else{
+      setData({
+        ...data,
+        password: val,
+        isValidPassword: false
+      })
+    }
   }
 
   const updateSecureTextEntry = () =>{
@@ -56,6 +69,24 @@ const Login = ({navigation}) => {
       ...data,
       secureTextEntry: !data.secureTextEntry
     })
+  }
+
+  const loginHandle = (email, password) =>{
+    login(email, password)
+  }
+ 
+  const handelValidEmail = (val) =>{
+    if(val.length>=9){
+      setData({
+        ...data,
+        isValidEmail: true
+      })
+    }else{
+      setData({
+        ...data,
+        isValidEmail: false
+      })
+    }
   }
 
   return(
@@ -81,6 +112,7 @@ const Login = ({navigation}) => {
             autoCapitalize='none'
             keyboardType='email-address'
             onChangeText={(val)=>textInputChange(val)}
+            onEndEditing={(e)=>handelValidEmail(e.nativeEvent.text)}
           />
           {data.check_textInputChange ? 
             <Animatable.View
@@ -94,6 +126,13 @@ const Login = ({navigation}) => {
             </Animatable.View>           
           :null}       
         </View>
+
+        {data.isValidEmail ? null :
+        <Animatable.View animation='fadeInLeft' duration={500}>
+          <Text style={styles.errorMsg}>O valor de entrada dever ser um email válido</Text>
+        </Animatable.View>
+        }
+
         <Text style={styles.text_footer, {marginTop:30}}>Senha</Text>
         <View style={styles.action}>
           <FontAwesome
@@ -125,11 +164,15 @@ const Login = ({navigation}) => {
             }
           </TouchableOpacity>       
         </View>
-        
+        {data.isValidPassword ? null :
+        <Animatable.View animation='fadeInLeft' duration={500}>
+          <Text style={styles.errorMsg}>A senha deve conter no mínimo 8 caracteres</Text>
+        </Animatable.View>
+        }
         <View style={styles.button}>
             <TouchableOpacity
               style={styles.signIn}
-              onPress={()=>{login()}}
+              onPress={()=>{loginHandle(data.email, data.password)}}
             >
               <LinearGradient
                 colors={['#08d4c4', '#01ab9d']}

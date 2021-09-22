@@ -5,22 +5,82 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContent } from './components/DrawerContent';
 import { Contact, MainStack, RootStackScreen } from './views';
 
+import AsyncStorage from '@react-native-community/async-storage';
+
 import {AuthContext} from './components/Context'
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
 
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [userToken, setUserToken] = React.useState(null);
+  // const [isLoading, setIsLoading] = React.useState(true);
+  // const [userToken, setUserToken] = React.useState(null);
+
+  const initialLoginState = {
+    isLoading: true,
+    email: null,
+    userToken: null
+  }
+
+  const loginReducer = (prevState, action) =>{
+    switch (action.type){
+      case 'RETRIEVE_TOKEN':
+      return{
+        ...prevState,
+        userToken:action.token,
+        isLoading: false
+      };
+      case 'LOGIN':
+      return{
+        ...prevState,
+        email: action.id,
+        userToken:action.token,
+        isLoading: false
+      };
+      case 'LOGON':
+      return{
+        ...prevState,
+        email: action.id,
+        userToken:action.token,
+        isLoading: false
+      };
+      case 'LOGOUT':
+      return{
+        ...prevState,
+        email: null,
+        userToken:null,
+        isLoading: false
+      };
+    }
+  };
+
+  const [loginState, dispacth] = React.useReducer(loginReducer, initialLoginState);
+
   const authContext = React.useMemo(()=>({
-    login:()=>{
-      setUserToken('tokenTeste');
-      setIsLoading(false);
+    login: async(email, passowrd)=>{
+      // setUserToken('tokenTeste');
+      // setIsLoading(false);
+      let userToken;
+      userToken = null;
+      if(email == 'email' && passowrd =='senha'){
+        userToken = 'tokenTeste';
+        try{
+          await AsyncStorage.setItem('userToken', userToken)
+        }catch(e){
+          console.log(e);
+        }
+      }
+      dispacth ({ type: 'LOGIN', id: email, token: userToken})
     },
-    logout:()=>{
-      setUserToken(null);
-      setIsLoading(false);
+    logout: async()=>{
+      // setUserToken(null);
+      // setIsLoading(false);
+      try{
+        await AsyncStorage.removeItem('userToken')
+      }catch(e){
+        console.log(e);
+      }
+      dispacth ({ type: 'LOGOUT'})
     },
     logon:()=>{
       setUserToken('tokenTeste');
@@ -30,11 +90,19 @@ export default function App() {
 
   useEffect(()=>{
     setTimeout(()=>{
-      setIsLoading(false);
+      // setIsLoading(false);
+      let userToken;
+      userToken = null;
+      try{
+        userToken = await AsyncStorage.getItem('userToken')
+      }catch(e){
+        console.log(e);
+      }
+      dispacth ({ type: 'LOGON', token: userToken})
     }, 1000)
   },[])
 
-  if(isLoading){
+  if(loginState.isLoading){
     return(
       <View style={{flex:1, justifyContent:'center', alingItems:'center'}} >
         <ActivityIndicator size='large'/>
@@ -45,7 +113,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
-        {userToken !== null ? (
+        {loginState.userToken !== null ? (
           <Drawer.Navigator
           drawerContent={props => <DrawerContent {...props}/>} 
           screenOptions={{

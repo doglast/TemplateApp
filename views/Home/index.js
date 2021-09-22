@@ -10,7 +10,7 @@ import { dummyData } from '../../data/Data';
 const Home = ({ navigation }) =>{
   return(
     <ScrollView>
-      <StatusBar backgroundColor='#303030' barStyle="light-content"/>
+      <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
       <Search/>
       <Carousel data = {dummyData}/>
       <Card data ={dummyData}/>

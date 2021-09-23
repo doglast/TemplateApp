@@ -1,23 +1,59 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {View, ActivityIndicator} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { 
+  NavigationContainer,
+  DarkTheme as NavigationDarkTheme,
+  DefaultTheme as NavigationDefaultTheme
+ } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContent } from './components/DrawerContent';
 import { Contact, MainStack, RootStackScreen } from './views';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {AuthContext} from './components/Context';
 
-import {AuthContext} from './components/Context'
+import {
+  Provider as PaperProvider, 
+  DarkTheme as PaperDarkTheme,
+  DefaultTheme as PaperDefaultTheme,
+  DarkTheme
+} from 'react-native-paper'; 
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+
+  const [isDarkTheme, setIsDarkTheme] = React.useState(false);
 
   const initialLoginState = {
     isLoading: true,
     email: null,
     userToken: null
   }
+
+  const CustomDefaultTheme = {
+    ...NavigationDefaultTheme,
+    ...PaperDefaultTheme,
+    colors:{
+      ...NavigationDefaultTheme.colors,
+      ...PaperDefaultTheme.colors,
+      background:'#ffffff',
+      text:'#333333'
+    }
+  }
+
+  const CustomDarkTheme = {
+    ...NavigationDarkTheme,
+    ...PaperDarkTheme,
+    colors:{
+      ...NavigationDarkTheme.colors,
+      ...PaperDarkTheme.colors,
+      background:'#333333',
+      text:'#ffffff'
+    }
+  }
+
+  const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
 
   const loginReducer = (prevState, action) =>{
     switch (action.type){
@@ -76,7 +112,10 @@ export default function App() {
       setUserToken('tokenTeste');
       setIsLoading(false);
     },
-  }));
+      toggleTheme:()=>{
+        setIsDarkTheme(isDarkTheme => !isDarkTheme);
+      }
+  }), []);
 
   useEffect(()=>{
     setTimeout(async()=>{
@@ -100,21 +139,23 @@ export default function App() {
   }
 
   return (
-    <AuthContext.Provider value={authContext}>
-      <NavigationContainer>
-        {loginState.userToken !== null ? (
-          <Drawer.Navigator
-          drawerContent={props => <DrawerContent {...props}/>} 
-          screenOptions={{
-            headerShown: false
-          }}
-        >
-          <Drawer.Screen name='Main' component={MainStack}/>
-          <Drawer.Screen name='Contact' component={Contact}/>
-        </Drawer.Navigator>
-        ):<RootStackScreen/>
-        }  
-      </NavigationContainer>
-    </AuthContext.Provider>
+    <PaperProvider theme={theme}>
+      <AuthContext.Provider value={authContext}>
+        <NavigationContainer theme={theme}>
+          {loginState.userToken !== null ? (
+            <Drawer.Navigator
+            drawerContent={props => <DrawerContent {...props}/>} 
+            screenOptions={{
+              headerShown: false
+            }}
+          >
+            <Drawer.Screen name='Main' component={MainStack}/>
+            <Drawer.Screen name='Contact' component={Contact}/>
+          </Drawer.Navigator>
+          ):<RootStackScreen/>
+          }  
+        </NavigationContainer>
+      </AuthContext.Provider>
+    </PaperProvider>
   );
 }

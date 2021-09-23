@@ -30,6 +30,8 @@ const Login = ({navigation}) => {
     isValidPassword: true
   });
 
+  const {colors} = useTheme();
+
   const { login } = React.useContext(AuthContext);
   
   const textInputChange = (val) =>{
@@ -118,18 +120,21 @@ const Login = ({navigation}) => {
       </View>
       <Animatable.View 
         animation='fadeInUpBig'
-        style={styles.footer}
+        style={[styles.footer,{
+          backgroundColor:colors.background
+        }]}
       >
-        <Text style={styles.text_footer}>Email</Text>
+        <Text style={[styles.text_footer,
+          {color:colors.text}]}>Email</Text>
         <View style={styles.action}>
           <FontAwesome
             name='user-o'
-            color='#05375a'
+            color={colors.text}
             size={20}
           />
           <TextInput
             placeholder='email@email.com'
-            style={styles.textInput}
+            style={[styles.textInput, {color:colors.text}]}
             autoCapitalize='none'
             keyboardType='email-address'
             onChangeText={(val)=>textInputChange(val)}
@@ -154,16 +159,16 @@ const Login = ({navigation}) => {
         </Animatable.View>
         }
 
-        <Text style={styles.text_footer, {marginTop:30}}>Senha</Text>
+        <Text style={[styles.text_footer, {color:colors.text, marginTop:30}]}>Senha</Text>
         <View style={styles.action}>
           <FontAwesome
             name='lock'
-            color='#05375a'
+            color={colors.text}
             size={20}
           />
           <TextInput
             placeholder='Senha'
-            style={styles.textInput}
+            style={[styles.textInput, {color:colors.text}]}
             autoCapitalize='none'
             secureTextEntry={data.secureTextEntry ? true: false}
             onChangeText={(val)=> handlePasswordChange(val)}    

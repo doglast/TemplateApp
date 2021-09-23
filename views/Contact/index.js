@@ -1,12 +1,18 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
 import Search from '../../components/Search';
 import { windowHeight, windowWidth } from '../../utils/Dimensions';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useTheme } from '@react-navigation/native';
 
 const Contact = ({navigation}) =>{
+
+  const {colors} = useTheme();
+  const theme = useTheme();
+
   return(
       <View style={styles.container}>
+        <StatusBar barStyle={theme.dark? 'light-content':'dark-content'}/>
         <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity
@@ -21,7 +27,9 @@ const Contact = ({navigation}) =>{
         </View>       
       </View>
       <View style={{justifyContent:'center', alignItems:'center'}}>
-        <Text style={styles.titulo}>Entre em contato conosco</Text>
+        <Text style={[styles.titulo,{
+          color: colors.text
+        }]}>Entre em contato conosco</Text>
         <View style={styles.containerEndereco}>
           <Text style={styles.subtitulo}>Venha falar com a gente</Text>
           <Text style={styles.texto}>Endereço:</Text>

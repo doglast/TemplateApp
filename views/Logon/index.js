@@ -73,6 +73,8 @@ const Logon = ({navigation}) => {
     })
   }
 
+  const {colors} = useTheme();
+
   return(
     <View style={styles.container}>
       <StatusBar backgroundColor='#009387' barStyle="light-content"/>
@@ -81,18 +83,21 @@ const Logon = ({navigation}) => {
       </View>
       <Animatable.View 
         animation='fadeInUpBig'
-        style={styles.footer}
+        style={[styles.footer,{
+          backgroundColor:colors.background
+        }]}
       >
-        <Text style={styles.text_footer}>Email</Text>
+        <Text style={[styles.text_footer,
+          {color:colors.text}]}>Email</Text>
         <View style={styles.action}>
           <FontAwesome
             name='user-o'
-            color='#05375a'
+            color={colors.text}
             size={20}
           />
           <TextInput
             placeholder='email@email.com'
-            style={styles.textInput}
+            style={[styles.textInput, {color:colors.text}]}
             autoCapitalize='none'
             keyboardType='email-address'
             onChangeText={(val)=>textInputChange(val)}
@@ -109,16 +114,16 @@ const Logon = ({navigation}) => {
             </Animatable.View>           
           :null}       
         </View>
-        <Text style={styles.text_footer, {marginTop:30}}>Senha</Text>
+        <Text style={[styles.text_footer, {color:colors.text, marginTop:30}]}>Senha</Text>
         <View style={styles.action}>
           <FontAwesome
             name='lock'
-            color='#05375a'
+            color={colors.text}
             size={20}
           />
           <TextInput
             placeholder='Senha'
-            style={styles.textInput}
+            style={[styles.textInput, {color:colors.text}]}
             autoCapitalize='none'
             secureTextEntry={data.secureTextEntry ? true: false}
             onChangeText={(val)=> handlePasswordChange(val)}    
@@ -140,16 +145,16 @@ const Logon = ({navigation}) => {
             }
           </TouchableOpacity>       
         </View>
-        <Text style={styles.text_footer, {marginTop:30}}>Confirme a senha</Text>
+        <Text style={[styles.text_footer, {color:colors.text, marginTop:30}]}>Confirme a senha</Text>
         <View style={styles.action}>
           <FontAwesome
             name='lock'
-            color='#05375a'
+            color={colors.text}
             size={20}
           />
           <TextInput
             placeholder='Confirme a senha'
-            style={styles.textInput}
+            style={[styles.textInput, {color:colors.text}]}
             autoCapitalize='none'
             secureTextEntry={data.secureTextEntry ? true: false}
             onChangeText={(val)=> handleConfirmPasswordChange(val)}    

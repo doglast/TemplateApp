@@ -15,7 +15,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import { useTheme } from 'react-native-paper';
 
-import {AuthContext} from '../../components/Context'
+import {AuthContext} from '../../components/Context';
+
+import Users from '../../models/users';
 
 const Login = ({navigation}) => {
 
@@ -49,7 +51,7 @@ const Login = ({navigation}) => {
   }
 
   const handlePasswordChange = (val) =>{
-    if(val.trim().length >= 8){
+    if(val.trim().length >= 5){
       setData({
         ...data,
         password: val,
@@ -72,7 +74,26 @@ const Login = ({navigation}) => {
   }
 
   const loginHandle = (email, password) =>{
-    login(email, password)
+    const foundUser = Users.filter(item=>{
+      return email == item.email && password == item.password;
+    });
+
+    if(data.email.length ==0 || data.password ==0){
+      Alert.alert(
+        'Entrada inválida', 
+        'Preencha todos os campos do formulário',
+        [{text:'Okay'}]);
+        return;
+    }
+    
+    if(foundUser.length == 0){
+      Alert.alert(
+        'Usuário inválido', 
+        'Verifique se email e senha estão corretos',
+        [{text:'Okay'}]);
+        return;
+    }
+    login(foundUser)
   }
  
   const handelValidEmail = (val) =>{

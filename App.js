@@ -54,17 +54,14 @@ export default function App() {
   const [loginState, dispacth] = React.useReducer(loginReducer, initialLoginState);
 
   const authContext = React.useMemo(()=>({
-    login: async(email, passowrd)=>{
-      let userToken;
-      userToken = null;
-      if(email == 'email@email' && passowrd =='senha'){
-        userToken = 'tokenTeste';
+    login: async(foundUser)=>{
+      const userToken = String(foundUser[0].userToken);
+      const email = foundUser[0].email ;
         try{
           await AsyncStorage.setItem('userToken', userToken)
         }catch(e){
           console.log(e);
-        }
-      }
+        }     
       dispacth ({ type: 'LOGIN', id: email, token: userToken})
     },
     logout: async()=>{

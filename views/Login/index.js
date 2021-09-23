@@ -116,7 +116,7 @@ const Login = ({navigation}) => {
           />
           {data.check_textInputChange ? 
             <Animatable.View
-              animation='bounceInz'
+              animation='bounceIn'
             >
               <Feather
               name='check-circle'

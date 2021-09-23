@@ -5,16 +5,13 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContent } from './components/DrawerContent';
 import { Contact, MainStack, RootStackScreen } from './views';
 
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {AuthContext} from './components/Context'
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
-
-  // const [isLoading, setIsLoading] = React.useState(true);
-  // const [userToken, setUserToken] = React.useState(null);
 
   const initialLoginState = {
     isLoading: true,
@@ -58,11 +55,9 @@ export default function App() {
 
   const authContext = React.useMemo(()=>({
     login: async(email, passowrd)=>{
-      // setUserToken('tokenTeste');
-      // setIsLoading(false);
       let userToken;
       userToken = null;
-      if(email == 'email' && passowrd =='senha'){
+      if(email == 'email@email' && passowrd =='senha'){
         userToken = 'tokenTeste';
         try{
           await AsyncStorage.setItem('userToken', userToken)
@@ -73,8 +68,6 @@ export default function App() {
       dispacth ({ type: 'LOGIN', id: email, token: userToken})
     },
     logout: async()=>{
-      // setUserToken(null);
-      // setIsLoading(false);
       try{
         await AsyncStorage.removeItem('userToken')
       }catch(e){
@@ -89,12 +82,11 @@ export default function App() {
   }));
 
   useEffect(()=>{
-    setTimeout(()=>{
-      // setIsLoading(false);
+    setTimeout(async()=>{
       let userToken;
       userToken = null;
       try{
-        userToken = await AsyncStorage.getItem('userToken')
+        userToken = await AsyncStorage.getItem('userToken');
       }catch(e){
         console.log(e);
       }

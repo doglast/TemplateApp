@@ -17,50 +17,57 @@ Template
 <pre>
 
 
-![loginDark](https://user-images.githubusercontent.com/21162315/139477471-146096fb-2b2d-4e16-b123-37eaa9402268.gif)  ![loginDefault](https://user-images.githubusercontent.com/21162315/139477473-095272f1-0c70-4a7e-988d-c5772a3a1514.gif)
+                   <img src="./assets/readme/onboardingDefault.png" alt="onboardingDefault" height="425">                 <img src="./assets/readme/onboardingDark.png" alt="onboardingDark" height="425">
 
 
 </pre>
 
--📌 **Login & Logon**
+-📌 **Login**
 <pre>
-                   <img src="https://user-images.githubusercontent.com/21162315/130243909-0722fa40-978f-400c-9e5c-7b9ce149bc20.jpeg" alt="Login" height="425">                 <img src="https://user-images.githubusercontent.com/21162315/130244087-28102a53-bf03-45bb-8e5b-47131f97dcab.jpeg" alt="Logon" height="425">
+                   <img src="./assets/readme/loginDefault.png" alt="loginDefault" height="425">                 <img src="./assets/readme/loginDark.png" alt="loginDark" height="425">
 
 
 </pre>
 
-### Home Screen
+-📌 **Logon**
 <pre>
-                                           <img src="https://user-images.githubusercontent.com/21162315/130244788-1fc443ab-dacf-4728-bc4f-8ecd7bb0bb93.jpeg" alt="Home Screen" height="425">     
+                   <img src="./assets/readme/logonDefault.png" alt="logonDefault" height="425">                 <img src="./assets/readme/logonDark.png" alt="logonDark" height="425">
+
+
+</pre>
+### Side Menu
+<pre>
+                   <img src="./assets/readme/sideMenuDefault.jpeg" alt="sideMenuDefault" height="425">                 <img src="./assets/readme/sideMenuDark.jpeg" alt="sideMenuDark" height="425">   
 </pre>
 
--📌 **Movie List**
+## Demo 📷
+
+-📌 **Initial Screens**
 <pre>
-                                           <img src="https://user-images.githubusercontent.com/21162315/130244880-3e2d6fba-56fa-42d4-9c0c-a0f47a96f396.png" alt="Movie List" height="425">      
+
+
+                   <img src="./assets/readme/loginDefault.gif" alt="onboardingDefault" height="425">                 <img src="./assets/readme/loginDark.gif" alt="onboardingDark" height="425">
+
+
 </pre>
 
--📌 **Movie Create**
+-📌 **Bottom Tab Navigation**
 <pre>
-                                           <img src="https://user-images.githubusercontent.com/21162315/130245145-b625dbb8-75f6-4ce1-90c7-453cae27349f.png" alt="Movie Create" height="425">      
+                                           <img src="./assets/readme/bottomTab.gif" alt="Bottom Tab Navigation" height="425">
+
 </pre>
 
--📌 **Serie List**
+-📌 **Side Menu Navigation**
 <pre>
-                                           <img src="https://user-images.githubusercontent.com/21162315/130245294-c1e29ee1-6394-4d55-a0dd-c5ffebe5a39a.png" alt="Serie List" height="425">      
-</pre>
+                                           <img src="./assets/readme/sideMenu.gif" alt="Side Menu Navigation" height="425">
 
--📌 **Serie Create**
-<pre>
-                                           <img src="https://user-images.githubusercontent.com/21162315/130245289-48d7d5db-9d38-4eff-a093-6469afa10988.png" alt="Serie Create" height="425">      
-</pre>
 
 ## Features 🗃️
 This app features all the latest tools and practices in mobile development!
 
 - **React-Native** 
 - **Expo**
-- **Node Rest API** 
-- **Axios**
+- **React-Native Navigation 5**
 
 ## License 📃
 

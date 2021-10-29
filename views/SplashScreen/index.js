@@ -6,7 +6,6 @@ import {
     Dimensions,
     StyleSheet,
     StatusBar,
-    Image
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {LinearGradient} from 'expo-linear-gradient';
@@ -23,7 +22,8 @@ const SplashScreen = ({navigation}) => {
             <Animatable.Image 
                 animation="bounceIn"
                 duraton="1500"
-            source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzxQJBzp0HQrzWvRx9CTwxRwe3zrew4BitwtA71GQ1HCGUME2xwGLUadpQLIT5tU8R69Y&usqp=CAU'}}
+            source={require('../../assets/Images/logo3.png')}
+            
             style={styles.logo}
             resizeMode="stretch"
             />
@@ -36,7 +36,9 @@ const SplashScreen = ({navigation}) => {
         >
             <Text style={[styles.title, {
                 color: colors.text
-            }]}>Entretenimento em Juiz de Fora e região</Text>
+            }]}>
+                Venha conhecer a agenda de eventos da região
+            </Text>
             <Text style={styles.text}>Entre com a sua conta</Text>
             <View style={styles.button}>
             <TouchableOpacity onPress={()=>navigation.navigate('Login')}>
@@ -61,8 +63,9 @@ const SplashScreen = ({navigation}) => {
 export default SplashScreen;
 
 
-const {height} = Dimensions.get("screen");
-const height_logo = height * 0.28;
+const {height, width} = Dimensions.get("screen");
+const height_logo = height * 0.35;
+const width_logo = width * 0.9;
 
 const styles = StyleSheet.create({
   container: {
@@ -83,7 +86,7 @@ const styles = StyleSheet.create({
       paddingHorizontal: 30
   },
   logo: {
-      width: height_logo,
+      width: width_logo,
       height: height_logo
   },
   title: {

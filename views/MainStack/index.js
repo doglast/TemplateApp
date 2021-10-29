@@ -114,7 +114,7 @@ const HomeStackScreen = ({navigation}) =>(
       name='Home' 
       component={Home}
       options={{
-        title:'Zine',
+        title:'Homepage',
         headerLeft: () =>(          
           <TouchableOpacity style={styles.menuButton} onPress={()=> navigation.openDrawer()} >
         <Icon 
